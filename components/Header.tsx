@@ -5,7 +5,7 @@ import {
   SearchIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
-
+import { useSession, signIn, signOut } from "next-auth/react";
 type HeaderProps = {};
 
 const Header: React.FC<HeaderProps> = () => {
@@ -29,7 +29,10 @@ const Header: React.FC<HeaderProps> = () => {
           <SearchIcon className="h-12 p-4" />
         </div>
 
-        <div className="flex text-white items-center text-xs space-x-6 mx-6 whitespace-nowrap">
+        <div
+          onClick={() => signIn()}
+          className="flex text-white items-center text-xs space-x-6 mx-6 whitespace-nowrap"
+        >
           <div className="link">
             <p>Hello Mahdi Parivsh</p>
             <p className="font-extrabold md:text-sm">Account & List</p>
