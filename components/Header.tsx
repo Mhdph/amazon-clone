@@ -8,10 +8,14 @@ import {
 import { useSession, signIn, signOut } from "next-auth/react";
 type HeaderProps = {};
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { selectItems } from "../slices/basketSlice";
 
 const Header: React.FC<HeaderProps> = () => {
   const { data: session } = useSession();
   const router = useRouter();
+  const items = useSelector(selectItems);
+
   return (
     <header>
       <div className="flex items-center bg-amazon_blue p-1 flex-grow py-2">
@@ -51,7 +55,7 @@ const Header: React.FC<HeaderProps> = () => {
           >
             <ShoppingCartIcon className="h-10" />
             <span className="absolute bg-yellow-400 top-0 right-0 md:right-10 h-4 w-4 text-center rounded-full text-black font-bold">
-              4
+              {items.length}
             </span>
             <p className="hidden md:inline mt-2 font-extrabold md:text-sm">
               Basket
