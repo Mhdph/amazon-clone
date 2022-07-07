@@ -6,4 +6,6 @@ export interface Products {
   description: string;
   image: string;
   rating?: number;
+  prime?: boolean;
+  index?: number;
 }
